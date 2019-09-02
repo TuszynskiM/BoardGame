@@ -3,7 +3,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup] (#setup)
+* [Setup](#setup)
 
 ## General info
 Board game is a application with 20 fields. The player rolls the cube dice. Fields 12 and 19 have special functions. 
