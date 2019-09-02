@@ -1,4 +1,5 @@
 const throwBtn = document.querySelector('.throw');
+const boardWraper = document.querySelector('.board');
 
 // Special field:
 // string - title to show
@@ -27,12 +28,18 @@ const board = [
     {isActive:false, specialField:'Wygraną'},
 ]
 
-const pawn = {currentField:0, numberOfThrows:0, numberOfStitches: 0}
+for(let i =0; i< board.length;i++){
+    let fieldDiv = document.createElement('div');
+    fieldDiv.classList.add('field');
+    boardWraper.appendChild(fieldDiv);
+}
 
+boardWraper.children[0].classList.add('active');
+
+const pawn = {currentField:0, numberOfThrows:0, numberOfStitches: 0}
 
 const throwCube = () => {
     let throwedNumber = Math.floor((Math.random() * 5) + 1);
-    console.log(throwedNumber)
     pawn.numberOfThrows +=1;
     pawn.numberOfStitches += throwedNumber;
     movePawn(throwedNumber);
@@ -40,11 +47,12 @@ const throwCube = () => {
 
 const movePawn = (number) => {
     board[pawn.currentField].isActive= false;
+    boardWraper.children[pawn.currentField].classList.remove('active');
     pawn.currentField += number;
-    console.log(pawn)
     if(pawn.currentField > 20){
         pawn.currentField = 20 - (pawn.currentField - 20);
-    }
+    }    
+    boardWraper.children[pawn.currentField].classList.add('active');
     board[pawn.currentField].isActive= true;
     result();
 }
@@ -61,3 +69,5 @@ const result = () => {
 }
 
 throwBtn.addEventListener('click', throwCube)
+
+
