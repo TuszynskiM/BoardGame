@@ -1,17 +1,170 @@
+:root {
+    --size-field: 22vh;
+    --font-size: 60px;
+    --translate-X: calc(50% - (var(--font-size)/4));
+    --translate-Y: calc(50% - (var(--font-size)/2));
+    --distance-between-field-Y: 12vh;
+}
+
 * {
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
 }
 
-.field {
-    width: 50px;
-    height: 50px;
-    border: 2px solid black;
+.board {
+    position: relative;
+    height: 100vh;
+    background-color: grey;
 }
 
-.active {
-    background-color: black;
-    border: white solid 15px; 
+.throw {
+    position: absolute;
+    bottom: 2vh;
+    right: 2vh;
+    padding: 1vh 4vh;
+    font-size: var(--font-size);
+}
+
+.field {
+    position: absolute;
+    width: var(--size-field);
+    height: var(--size-field);
+    border: 2px solid black;
     border-radius: 50%;
+    transform: rotateY(10deg) rotateX(-70deg);
+}
+
+.field:nth-child(1) {
+    bottom: -5vh;
+    left: 0vh;
+    width: calc(var(--size-field) + 7vh);
+    height: calc(var(--size-field) + 7vh);
+}
+
+.field:nth-child(2) {
+    bottom: var(--distance-between-field-Y);
+    left: 5vh;
+}
+
+.field:nth-child(3) {
+    bottom: calc(var(--distance-between-field-Y) * 2 + 1vh);
+    left: 10vh;
+}
+
+.field:nth-child(4) {
+    bottom: calc(var(--distance-between-field-Y) * 3 + 2vh);
+    left: 15vh;
+}
+
+.field:nth-child(5) {
+    bottom: calc(var(--distance-between-field-Y) * 4 + 4vh);
+    left: 20vh;
+}
+
+.field:nth-child(6) {
+    bottom: calc(var(--distance-between-field-Y) * 5 + 5vh);
+    left: 28vh;
+}
+
+.field:nth-child(7) {
+    bottom: calc(var(--distance-between-field-Y) * 6 + 6vh);
+    left: 40vh;
+}
+
+.field:nth-child(8) {
+    bottom: calc(var(--distance-between-field-Y) * 7);
+    left: 65vh;
+}
+
+.field:nth-child(9) {
+    bottom: calc(var(--distance-between-field-Y) * 6 + 5vh);
+    left: 85vh;
+}
+
+.field:nth-child(10) {
+    bottom: calc(var(--distance-between-field-Y) * 5 + 5vh);
+    left: 75vh;
+}
+
+.field:nth-child(11) {
+    bottom: calc(var(--distance-between-field-Y) * 4 + 4vh);
+    left: 68vh;
+}
+
+.field:nth-child(12) {
+    bottom: calc(var(--distance-between-field-Y) * 3 + 3vh);
+    left: 66vh;
+}
+
+.field:nth-child(13) {
+    bottom: calc(var(--distance-between-field-Y) * 2 + 1vh);
+    left: 68vh;
+    background: url(Images/czaszka.png) repeat center center;
+    background-size: cover;
+}
+
+.field:nth-child(14) {
+    bottom: calc(var(--distance-between-field-Y) - 1vh);
+    left: 75vh;
+}
+
+.field:nth-child(15) {
+    bottom: -1vh;
+    left: 92vh;
+}
+
+.field:nth-child(16) {
+    bottom: calc(var(--distance-between-field-Y) - 1vh);
+    left: 115vh;
+}
+
+.field:nth-child(17) {
+    bottom: calc(var(--distance-between-field-Y) * 2 - 1vh);
+    left: 125vh;
+}
+
+.field:nth-child(18) {
+    bottom: calc(var(--distance-between-field-Y) * 3);
+    left: 130vh;
+}
+
+.field:nth-child(19) {
+    bottom: calc(var(--distance-between-field-Y) * 4);
+    left: 137vh;
+}
+
+.field:nth-child(20) {
+    bottom: calc(var(--distance-between-field-Y) * 5);
+    left: 145vh;
+}
+
+.field:nth-child(21) {
+    bottom: calc(var(--distance-between-field-Y) * 6 - 5vh);
+    left: 150vh;
+    width: calc(var(--size-field) + 10vh);
+    height: calc(var(--size-field) + 10vh);
+    background: url(Images/meta.jpg) repeat center center;
+    background-size: cover;
+}
+
+.field p {
+    width: 100%;
+    height: 100%;
+    transform: translateX(var(--translate-X)) translateY(var(--translate-Y));
+    font-size: var(--font-size);
+}
+
+.field:nth-child(1) p {
+    transform: translateX(calc(50% - 56px)) translateY(var(--translate-Y));
+}
+
+.field:nth-child(n + 11) p {
+    transform: translateX(calc(var(--translate-X) - 12px)) translateY(var(--translate-Y));
+}
+
+.field:nth-child(21) p {
+    transform: translateX(calc(50% - 50px)) translateY(var(--translate-Y));
+    font-size: 40px;
 }

@@ -28,14 +28,6 @@ const board = [
     {isActive:false, specialField:'Wygraną'},
 ]
 
-for(let i =0; i< board.length;i++){
-    let fieldDiv = document.createElement('div');
-    fieldDiv.classList.add('field');
-    boardWraper.appendChild(fieldDiv);
-}
-
-boardWraper.children[0].classList.add('active');
-
 const pawn = {currentField:0, numberOfThrows:0, numberOfStitches: 0}
 
 const throwCube = () => {
