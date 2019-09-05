@@ -1,13 +1,12 @@
 :root {
-    --size-field: 22vh;
+    --size-field:22vh;
     --font-size: 60px;
     --translate-X: calc(50% - (var(--font-size)/4));
     --translate-Y: calc(50% - (var(--font-size)/2));
-    --distance-between-field-Y: 12vh;
+    --distance-between-field-Y: 5.5vw;
 }
 
 * {
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
@@ -19,11 +18,31 @@
     background-color: grey;
 }
 
+.pawn {
+    position: absolute;
+    height: 300px;
+    width: 100px;
+    transform: rotateY(10deg) rotateX(40deg) translateX(70%) translateY(-140%);
+}
+
+.dice {
+    position: absolute;
+    bottom: 15vh;
+    right: 8vw;
+    width: 96px;
+    height: 96px;
+    background: url('Images/dice.jpg') no-repeat -176px center;
+    background-size:950% ;
+    border-radius: 15%;
+    transition: 0.3s;
+}
+
+
 .throw {
     position: absolute;
     bottom: 2vh;
-    right: 2vh;
-    padding: 1vh 4vh;
+    right: 5vw;
+    padding: 10px 30px;
     font-size: var(--font-size);
 }
 
@@ -38,111 +57,113 @@
 
 .field:nth-child(1) {
     bottom: -5vh;
-    left: 0vh;
+    left: 1vw;
     width: calc(var(--size-field) + 7vh);
     height: calc(var(--size-field) + 7vh);
 }
 
 .field:nth-child(2) {
     bottom: var(--distance-between-field-Y);
-    left: 5vh;
+    left: 2.29vw;
 }
 
 .field:nth-child(3) {
     bottom: calc(var(--distance-between-field-Y) * 2 + 1vh);
-    left: 10vh;
+    left: 4.58vw;
 }
 
 .field:nth-child(4) {
     bottom: calc(var(--distance-between-field-Y) * 3 + 2vh);
-    left: 15vh;
+    left: 6.87vw;
 }
 
 .field:nth-child(5) {
     bottom: calc(var(--distance-between-field-Y) * 4 + 4vh);
-    left: 20vh;
+    left: 9.16vw;
 }
 
 .field:nth-child(6) {
     bottom: calc(var(--distance-between-field-Y) * 5 + 5vh);
-    left: 28vh;
+    left: 12.88vw;
 }
 
 .field:nth-child(7) {
     bottom: calc(var(--distance-between-field-Y) * 6 + 6vh);
-    left: 40vh;
+    left: 18.4vw;
 }
 
 .field:nth-child(8) {
     bottom: calc(var(--distance-between-field-Y) * 7);
-    left: 65vh;
+    left: 29.9vw;
 }
 
 .field:nth-child(9) {
     bottom: calc(var(--distance-between-field-Y) * 6 + 5vh);
-    left: 85vh;
+    left: 39.1vw;
 }
 
 .field:nth-child(10) {
     bottom: calc(var(--distance-between-field-Y) * 5 + 5vh);
-    left: 75vh;
+    left: 34.5vw;
 }
 
 .field:nth-child(11) {
     bottom: calc(var(--distance-between-field-Y) * 4 + 4vh);
-    left: 68vh;
+    left: 31.28vw;
 }
 
 .field:nth-child(12) {
     bottom: calc(var(--distance-between-field-Y) * 3 + 3vh);
-    left: 66vh;
+    left: 30.36vw;
 }
 
 .field:nth-child(13) {
     bottom: calc(var(--distance-between-field-Y) * 2 + 1vh);
-    left: 68vh;
-    background: url(Images/czaszka.png) repeat center center;
-    background-size: cover;
+    left: 31.28vw;
+    background: url(Images/czaszka.png) no-repeat center center;
+    background-size: 60%;
 }
 
 .field:nth-child(14) {
     bottom: calc(var(--distance-between-field-Y) - 1vh);
-    left: 75vh;
+    left: 34.5vw;
 }
 
 .field:nth-child(15) {
     bottom: -1vh;
-    left: 92vh;
+    left: 42.32vw;
 }
 
 .field:nth-child(16) {
     bottom: calc(var(--distance-between-field-Y) - 1vh);
-    left: 115vh;
+    left: 52.9vw;
 }
 
 .field:nth-child(17) {
     bottom: calc(var(--distance-between-field-Y) * 2 - 1vh);
-    left: 125vh;
+    left: 57.5vw;
 }
 
 .field:nth-child(18) {
     bottom: calc(var(--distance-between-field-Y) * 3);
-    left: 130vh;
+    left: 59.8vw;
 }
 
 .field:nth-child(19) {
     bottom: calc(var(--distance-between-field-Y) * 4);
-    left: 137vh;
+    left: 63.02vw;
 }
 
 .field:nth-child(20) {
     bottom: calc(var(--distance-between-field-Y) * 5);
-    left: 145vh;
+    left: 66.7vw;
+    background: url(Images/back-icon-18.jpg) no-repeat center center;
+    background-size: 55%;
 }
 
 .field:nth-child(21) {
     bottom: calc(var(--distance-between-field-Y) * 6 - 5vh);
-    left: 150vh;
+    left: 69vw;
     width: calc(var(--size-field) + 10vh);
     height: calc(var(--size-field) + 10vh);
     background: url(Images/meta.jpg) repeat center center;
@@ -162,6 +183,11 @@
 
 .field:nth-child(n + 11) p {
     transform: translateX(calc(var(--translate-X) - 12px)) translateY(var(--translate-Y));
+}
+
+
+.field:nth-child(20) p {
+    transform: translateX(calc(var(--translate-X) - 60px)) translateY(calc(var(--translate-Y) + 25px));
 }
 
 .field:nth-child(21) p {
