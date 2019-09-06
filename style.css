@@ -3,7 +3,7 @@
     --font-size: 60px;
     --translate-X: calc(50% - (var(--font-size)/4));
     --translate-Y: calc(50% - (var(--font-size)/2));
-    --distance-between-field-Y: 5.5vw;
+    --distanceY-between-field: 5.5vw;
 }
 
 * {
@@ -31,7 +31,7 @@
     right: 8vw;
     width: 96px;
     height: 96px;
-    background: url('Images/dice.jpg') no-repeat -176px center;
+    background: url('Images/dice.jpg') no-repeat -23px center;
     background-size:950% ;
     border-radius: 15%;
     transition: 0.3s;
@@ -53,6 +53,8 @@
     border: 2px solid black;
     border-radius: 50%;
     transform: rotateY(10deg) rotateX(-70deg);
+    transition: 0.3s;
+    box-shadow: 5px 30px 10px rgba(0, 0, 0, 0.7);
 }
 
 .field:nth-child(1) {
@@ -63,69 +65,69 @@
 }
 
 .field:nth-child(2) {
-    bottom: var(--distance-between-field-Y);
+    bottom: var(--distanceY-between-field);
     left: 2.29vw;
 }
 
 .field:nth-child(3) {
-    bottom: calc(var(--distance-between-field-Y) * 2 + 1vh);
+    bottom: calc(var(--distanceY-between-field) * 2 + 1vh);
     left: 4.58vw;
 }
 
 .field:nth-child(4) {
-    bottom: calc(var(--distance-between-field-Y) * 3 + 2vh);
+    bottom: calc(var(--distanceY-between-field) * 3 + 2vh);
     left: 6.87vw;
 }
 
 .field:nth-child(5) {
-    bottom: calc(var(--distance-between-field-Y) * 4 + 4vh);
+    bottom: calc(var(--distanceY-between-field) * 4 + 4vh);
     left: 9.16vw;
 }
 
 .field:nth-child(6) {
-    bottom: calc(var(--distance-between-field-Y) * 5 + 5vh);
+    bottom: calc(var(--distanceY-between-field) * 5 + 5vh);
     left: 12.88vw;
 }
 
 .field:nth-child(7) {
-    bottom: calc(var(--distance-between-field-Y) * 6 + 6vh);
+    bottom: calc(var(--distanceY-between-field) * 6 + 6vh);
     left: 18.4vw;
 }
 
 .field:nth-child(8) {
-    bottom: calc(var(--distance-between-field-Y) * 7);
+    bottom: calc(var(--distanceY-between-field) * 7);
     left: 29.9vw;
 }
 
 .field:nth-child(9) {
-    bottom: calc(var(--distance-between-field-Y) * 6 + 5vh);
+    bottom: calc(var(--distanceY-between-field) * 6 + 5vh);
     left: 39.1vw;
 }
 
 .field:nth-child(10) {
-    bottom: calc(var(--distance-between-field-Y) * 5 + 5vh);
+    bottom: calc(var(--distanceY-between-field) * 5 + 5vh);
     left: 34.5vw;
 }
 
 .field:nth-child(11) {
-    bottom: calc(var(--distance-between-field-Y) * 4 + 4vh);
+    bottom: calc(var(--distanceY-between-field) * 4 + 4vh);
     left: 31.28vw;
 }
 
 .field:nth-child(12) {
-    bottom: calc(var(--distance-between-field-Y) * 3 + 3vh);
+    bottom: calc(var(--distanceY-between-field) * 3 + 3vh);
     left: 30.36vw;
 }
 
 .field:nth-child(13) {
-    bottom: calc(var(--distance-between-field-Y) * 2 + 1vh);
+    bottom: calc(var(--distanceY-between-field) * 2 + 1vh);
     left: 31.28vw;
     background: url(Images/czaszka.png) no-repeat center center;
     background-size: 60%;
 }
 
 .field:nth-child(14) {
-    bottom: calc(var(--distance-between-field-Y) - 1vh);
+    bottom: calc(var(--distanceY-between-field) - 1vh);
     left: 34.5vw;
 }
 
@@ -135,34 +137,34 @@
 }
 
 .field:nth-child(16) {
-    bottom: calc(var(--distance-between-field-Y) - 1vh);
+    bottom: calc(var(--distanceY-between-field) - 1vh);
     left: 52.9vw;
 }
 
 .field:nth-child(17) {
-    bottom: calc(var(--distance-between-field-Y) * 2 - 1vh);
+    bottom: calc(var(--distanceY-between-field) * 2 - 1vh);
     left: 57.5vw;
 }
 
 .field:nth-child(18) {
-    bottom: calc(var(--distance-between-field-Y) * 3);
+    bottom: calc(var(--distanceY-between-field) * 3);
     left: 59.8vw;
 }
 
 .field:nth-child(19) {
-    bottom: calc(var(--distance-between-field-Y) * 4);
+    bottom: calc(var(--distanceY-between-field) * 4);
     left: 63.02vw;
 }
 
 .field:nth-child(20) {
-    bottom: calc(var(--distance-between-field-Y) * 5);
+    bottom: calc(var(--distanceY-between-field) * 5);
     left: 66.7vw;
     background: url(Images/back-icon-18.jpg) no-repeat center center;
     background-size: 55%;
 }
 
 .field:nth-child(21) {
-    bottom: calc(var(--distance-between-field-Y) * 6 - 5vh);
+    bottom: calc(var(--distanceY-between-field) * 6 - 5vh);
     left: 69vw;
     width: calc(var(--size-field) + 10vh);
     height: calc(var(--size-field) + 10vh);
