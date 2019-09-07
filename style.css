@@ -1,9 +1,10 @@
 :root {
-    --size-field:22vh;
+    --size-field: 140px;
     --font-size: 60px;
+    --font-family: 'Niconne', cursive;
     --translate-X: calc(50% - (var(--font-size)/4));
     --translate-Y: calc(50% - (var(--font-size)/2));
-    --distanceY-between-field: 5.5vw;
+    --distanceY-between-field: 75px;
 }
 
 * {
@@ -15,7 +16,9 @@
 .board {
     position: relative;
     height: 100vh;
-    background-color: grey;
+    background: url("Images/mapa.jpg") no-repeat 45% 75%;
+    background-size: 145%;
+
 }
 
 .pawn {
@@ -23,16 +26,17 @@
     height: 300px;
     width: 100px;
     transform: rotateY(10deg) rotateX(40deg) translateX(70%) translateY(-140%);
+    z-index: 100;
 }
 
 .dice {
     position: absolute;
-    bottom: 15vh;
+    bottom: 9vh;
     right: 8vw;
-    width: 96px;
-    height: 96px;
-    background: url('Images/dice.jpg') no-repeat -23px center;
-    background-size:950% ;
+    width: 73px;
+    height: 73px;
+    background: url('Images/dice.jpg') no-repeat -20px center;
+    background-size: 950%;
     border-radius: 15%;
     transition: 0.3s;
 }
@@ -40,10 +44,22 @@
 
 .throw {
     position: absolute;
-    bottom: 2vh;
-    right: 5vw;
-    padding: 10px 30px;
+    bottom: 9vh;
+    right: 15vw;
+    padding: 0 1.5em;
     font-size: var(--font-size);
+    font-family: var(--font-family);
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+.throw:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
 }
 
 .field {
@@ -54,120 +70,121 @@
     border-radius: 50%;
     transform: rotateY(10deg) rotateX(-70deg);
     transition: 0.3s;
-    box-shadow: 5px 30px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 30px 10px rgba(0, 0, 0, 1);
+    background: #A600FF;
 }
 
 .field:nth-child(1) {
-    bottom: -5vh;
+    bottom: 12vh;
     left: 1vw;
-    width: calc(var(--size-field) + 7vh);
-    height: calc(var(--size-field) + 7vh);
+    width: calc(var(--size-field) + 4vh);
+    height: calc(var(--size-field) + 4vh);
 }
 
 .field:nth-child(2) {
-    bottom: var(--distanceY-between-field);
-    left: 2.29vw;
+    bottom: calc(var(--distanceY-between-field) + 15vh);
+    left: 2.3vw;
 }
 
 .field:nth-child(3) {
-    bottom: calc(var(--distanceY-between-field) * 2 + 1vh);
-    left: 4.58vw;
+    bottom: calc(var(--distanceY-between-field) * 2 + 16vh);
+    left: 4.6vw;
 }
 
 .field:nth-child(4) {
-    bottom: calc(var(--distanceY-between-field) * 3 + 2vh);
-    left: 6.87vw;
+    bottom: calc(var(--distanceY-between-field) * 3 + 17vh);
+    left: 6.8vw;
 }
 
 .field:nth-child(5) {
-    bottom: calc(var(--distanceY-between-field) * 4 + 4vh);
-    left: 9.16vw;
+    bottom: calc(var(--distanceY-between-field) * 4 + 18vh);
+    left: 10vw;
 }
 
 .field:nth-child(6) {
-    bottom: calc(var(--distanceY-between-field) * 5 + 5vh);
-    left: 12.88vw;
+    bottom: calc(var(--distanceY-between-field) * 6 + 11vh);
+    left: 13.5vw;
 }
 
 .field:nth-child(7) {
-    bottom: calc(var(--distanceY-between-field) * 6 + 6vh);
-    left: 18.4vw;
+    bottom: calc(var(--distanceY-between-field) * 6 + 18vh);
+    left: 21vw;
 }
 
 .field:nth-child(8) {
-    bottom: calc(var(--distanceY-between-field) * 7);
-    left: 29.9vw;
+    bottom: calc(var(--distanceY-between-field) * 6 + 17vh);
+    left: 29vw;
 }
 
 .field:nth-child(9) {
-    bottom: calc(var(--distanceY-between-field) * 6 + 5vh);
-    left: 39.1vw;
+    bottom: calc(var(--distanceY-between-field) * 6 + 10vh);
+    left: 31vw;
 }
 
 .field:nth-child(10) {
-    bottom: calc(var(--distanceY-between-field) * 5 + 5vh);
-    left: 34.5vw;
+    bottom: calc(var(--distanceY-between-field) * 5 + 7vh);
+    left: 32vw;
 }
 
 .field:nth-child(11) {
     bottom: calc(var(--distanceY-between-field) * 4 + 4vh);
-    left: 31.28vw;
+    left: 35vw;
 }
 
 .field:nth-child(12) {
-    bottom: calc(var(--distanceY-between-field) * 3 + 3vh);
-    left: 30.36vw;
+    bottom: calc(var(--distanceY-between-field) * 3 + 2vh);
+    left: 40vw;
 }
 
 .field:nth-child(13) {
-    bottom: calc(var(--distanceY-between-field) * 2 + 1vh);
-    left: 31.28vw;
+    bottom: calc(var(--distanceY-between-field) * 2 + 3vh);
+    left: 47vw;
     background: url(Images/czaszka.png) no-repeat center center;
     background-size: 60%;
+    background-color: #A600FF;
 }
 
 .field:nth-child(14) {
-    bottom: calc(var(--distanceY-between-field) - 1vh);
-    left: 34.5vw;
+    bottom: calc(var(--distanceY-between-field) * 3 - 2vh);
+    left: 57vw;
 }
 
 .field:nth-child(15) {
-    bottom: -1vh;
-    left: 42.32vw;
+    bottom: calc(var(--distanceY-between-field) * 3 + 1vh);
+    left: 67vw;
 }
 
 .field:nth-child(16) {
-    bottom: calc(var(--distanceY-between-field) - 1vh);
-    left: 52.9vw;
+    bottom: calc(var(--distanceY-between-field) * 4 + 1vh);
+    left: 75vw;
 }
 
 .field:nth-child(17) {
-    bottom: calc(var(--distanceY-between-field) * 2 - 1vh);
-    left: 57.5vw;
+    bottom: calc(var(--distanceY-between-field) * 4 + 6vh);
+    left: 65vw;
 }
 
 .field:nth-child(18) {
-    bottom: calc(var(--distanceY-between-field) * 3);
-    left: 59.8vw;
+    bottom: calc(var(--distanceY-between-field) * 5 + 2vh);
+    left: 54vw;
 }
 
 .field:nth-child(19) {
-    bottom: calc(var(--distanceY-between-field) * 4);
-    left: 63.02vw;
+    bottom: calc(var(--distanceY-between-field) * 6 + 3vh);
+    left: 59vw;
 }
 
 .field:nth-child(20) {
-    bottom: calc(var(--distanceY-between-field) * 5);
-    left: 66.7vw;
+    bottom: calc(var(--distanceY-between-field) * 7 - 1vh);
+    left: 69vw;
     background: url(Images/back-icon-18.jpg) no-repeat center center;
     background-size: 55%;
+    background-color: #A600FF;
 }
 
 .field:nth-child(21) {
-    bottom: calc(var(--distanceY-between-field) * 6 - 5vh);
-    left: 69vw;
-    width: calc(var(--size-field) + 10vh);
-    height: calc(var(--size-field) + 10vh);
+    bottom: calc(var(--distanceY-between-field) * 7 + 1vh);
+    left: 78vw;
     background: url(Images/meta.jpg) repeat center center;
     background-size: cover;
 }
@@ -175,21 +192,22 @@
 .field p {
     width: 100%;
     height: 100%;
-    transform: translateX(var(--translate-X)) translateY(var(--translate-Y));
+    transform: translateX(calc(var(--translate-X) + 5px)) translateY(calc(var(--translate-Y) - 1vh));
     font-size: var(--font-size);
+    font-family: var(--font-family);
 }
 
 .field:nth-child(1) p {
-    transform: translateX(calc(50% - 56px)) translateY(var(--translate-Y));
+    transform: translateX(18%) translateY(var(--translate-Y));
 }
 
 .field:nth-child(n + 11) p {
-    transform: translateX(calc(var(--translate-X) - 12px)) translateY(var(--translate-Y));
+    transform: translateX(calc(var(--translate-X) - 0.2vw)) translateY(calc(var(--translate-Y) - 1vh));
 }
 
 
 .field:nth-child(20) p {
-    transform: translateX(calc(var(--translate-X) - 60px)) translateY(calc(var(--translate-Y) + 25px));
+    transform: translateX(calc(var(--translate-X) - 1vw)) translateY(calc(var(--translate-Y) + 1vh));
 }
 
 .field:nth-child(21) p {
