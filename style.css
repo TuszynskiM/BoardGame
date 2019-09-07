@@ -41,11 +41,8 @@
     transition: 0.3s;
 }
 
-
-.throw {
-    position: absolute;
-    bottom: 9vh;
-    right: 15vw;
+.btn {
+    
     padding: 0 1.5em;
     font-size: var(--font-size);
     font-family: var(--font-family);
@@ -58,9 +55,59 @@
     cursor: pointer;
 }
 
-.throw:hover {
+.btn:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
 }
+
+.throwBtn{
+    position: absolute;
+    bottom: 9vh;
+    right: 15vw;
+}
+
+.closeBtn{
+    position: absolute;
+    top: 73%;
+    left: 55%;
+    padding: 0 0.75em;
+    font-size: calc(var(--font-size) / 2);
+}
+
+.results {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: url("Images/scroll.png") no-repeat center   center ;
+    background-size: 45%;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 36px;
+    font-family: var(--font-family);
+}
+
+.hideResults{
+    display: none;
+}
+
+.result{
+    position: absolute;
+    top:25%;
+    left:47%;
+}
+
+.countThrows{
+    position: absolute;
+    top:40%;
+    left:40%;
+}
+
+.average{
+    position: absolute;
+    top:50%;
+    left:40%;
+}
+
 
 .field {
     position: absolute;
