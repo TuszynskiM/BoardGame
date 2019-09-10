@@ -1,9 +1,12 @@
+const startBtn = document.querySelector(".startBtn");
+const startWindow = document.querySelector(".startWindow");
 const throwBtn = document.querySelector('.throwBtn');
 const closeBtn = document.querySelector('.closeBtn');
 const boardWraper = document.querySelectorAll('.field');
 const pawn = document.getElementById('pawnID');
 const dice = document.getElementById('diceID');
 const results = document.querySelector('.results');
+const wrapper = document.getElementById("wrapperID");
 
 // Special field:
 // string - title to show
@@ -34,6 +37,10 @@ const board = [
 
 const pawnInfo = { currentField: 0, numberOfThrows: 0, numberOfStitches: 0 };
 
+const fullScreen = () =>{
+  wrapper.requestFullscreen();
+}
+
 const getCoordinates = () => {
   boardWraper.forEach((fieldDiv, index) => {
     let coordinates = fieldDiv.getBoundingClientRect();
@@ -42,18 +49,22 @@ const getCoordinates = () => {
   });
 };
 
+
 (function init() {
   getCoordinates();
   pawn.style.top = board[0].top;
   pawn.style.left = board[0].left;
 })();
 
+
 const throwCube = async () => {
+  throwBtn.disabled = true;
   let throwedNumber = Math.floor(Math.random() * 6 + 1);
   pawnInfo.numberOfThrows += 1;
   pawnInfo.numberOfStitches += throwedNumber;
   dice.style.backgroundPositionX = `${-20 - (throwedNumber - 1) * 116}px`;
   await pawnPosition(throwedNumber);
+  throwBtn.disabled = false;
 };
 
 const pawnPosition = async number => {
@@ -74,7 +85,7 @@ const result = async () => {
     results.children[0].textContent = field;
     results.children[1].textContent = `Liczba rzutów: ${pawnInfo.numberOfThrows}`;
     results.children[2].textContent = ` Srednia liczba oczek: ${Math.round(pawnInfo.numberOfStitches / pawnInfo.numberOfThrows)}`;
-    results.classList.toggle('hideResults');
+    results.classList.toggle('hideWindow');
   } else if (typeof field === 'number') {
     await pawnPosition(field);
   }
@@ -109,21 +120,9 @@ const movePawn = async (increaseNumber) => {
       pawn.style.left = board[backIndex].left;
       await sleep(500);
   }
-
-  // if(startPoint<endPoint){
-  //   for (let i = startPoint; i <= endPoint; i++) {
-  //     pawn.style.top = board[i].top;
-  //     pawn.style.left = board[i].left;
-  //     await sleep(500);
-  //   }
-  // }else{
-  //     pawn.style.top = board[endPoint].top;
-  //     pawn.style.left = board[endPoint].left;
-  //     await sleep(500);
-  // }
 };
 
-async function sleep(milliseconds) {
+const sleep = async (milliseconds) => {
   const promise = new Promise(resolve =>
     setTimeout(() => {
       resolve();
@@ -132,10 +131,20 @@ async function sleep(milliseconds) {
   return await promise;
 }
 
+startBtn.addEventListener("click", fullScreen);
+
+wrapper.addEventListener("fullscreenchange", () =>{
+if(window.innerWidth == screen.width && window.innerHeight == screen.height){
+    startWindow.classList.toggle("hideWindow"); 
+}else{
+  startWindow.classList.toggle("hideWindow"); 
+} 
+})
+
 throwBtn.addEventListener('click', throwCube);
 
 closeBtn.addEventListener('click', async function() {
-  results.classList.toggle('hideResults');
+  results.classList.toggle('hideWindow');
   await pawnPosition(-pawnInfo.currentField);
   pawnInfo.numberOfStitches = 0;
   pawnInfo.numberOfThrows = 0;

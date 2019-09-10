@@ -20,6 +20,20 @@ body {
   max-width: 1920px;
 }
 
+.startWindow{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+}
+
+
 .board {
     position: relative;
     height: 100vh;
@@ -132,7 +146,7 @@ animation: cloudMovement 24s linear alternate infinite;
     z-index: 1000;
 }
 
-.hideResults {
+.hideWindow {
     display: none;
 }
 
