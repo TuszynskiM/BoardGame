@@ -87,6 +87,7 @@
     background-color: rgba(0, 0, 0, 0.7);
     font-size: 36px;
     font-family: var(--font-family);
+    z-index: 1000;
 }
 
 .hideResults{
