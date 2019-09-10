@@ -13,6 +13,13 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+.wrapper{
+  max-width: 1920px;
+}
+
 .board {
     position: relative;
     height: 100vh;
@@ -23,11 +30,11 @@
 
 .pawn {
     position: absolute;
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 150px;
     background: url("Images/pawn.png") no-repeat center center;
     background-size: 100%;
-    transform: rotateY(10deg) rotateX(40deg) translateX(30%) translateY(-70%);
+    transform: translateX(0%) translateY(-70%);
     z-index: 100;
     transition: 0.5s;
 }
@@ -44,14 +51,49 @@
     transition: 0.3s;
 }
 
+.clouds div{
+    position: absolute;
+    top: -50px;
+    left: -410px;
+    width: 500px;
+    height: 300px;
+    z-index: 10;
+}
+
+.cloud1{
+background: url("Images/cloud1.png") no-repeat ;
+background-size: contain;
+animation: cloudMovement 30s linear alternate infinite;
+}
+
+.cloud2{
+background: url("Images/cloud2.png") no-repeat ;
+background-size: contain;
+animation: cloudMovement 28s linear alternate-reverse infinite;
+}
+
+.cloud3{
+background: url("Images/cloud3.png") no-repeat ;
+background-size: contain;
+animation: cloudMovement 24s linear alternate infinite;
+}
+
+@keyframes cloudMovement{
+    0%{ top:-50px;
+        left: -410px;}
+
+    100%{ top:-35px;
+        left: 1920px}
+}
+
 .btn {
-    
+
     padding: 0 1.5em;
     font-size: var(--font-size);
     font-family: var(--font-family);
     text-align: center;
     color: white;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    background: linear-gradient(135deg, #6e8efb, #A600FF);
     border: none;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
@@ -62,13 +104,13 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
 }
 
-.throwBtn{
+.throwBtn {
     position: absolute;
     bottom: 9vh;
     right: 15vw;
 }
 
-.closeBtn{
+.closeBtn {
     position: absolute;
     top: 73%;
     left: 55%;
@@ -82,7 +124,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    background: url("Images/scroll.png") no-repeat center   center ;
+    background: url("Images/scroll.png") no-repeat center center;
     background-size: 45%;
     background-color: rgba(0, 0, 0, 0.7);
     font-size: 36px;
@@ -90,26 +132,26 @@
     z-index: 1000;
 }
 
-.hideResults{
+.hideResults {
     display: none;
 }
 
-.result{
+.result {
     position: absolute;
-    top:25%;
-    left:47%;
+    top: 25%;
+    left: 47%;
 }
 
-.countThrows{
+.countThrows {
     position: absolute;
-    top:40%;
-    left:40%;
+    top: 40%;
+    left: 40%;
 }
 
-.average{
+.average {
     position: absolute;
-    top:50%;
-    left:40%;
+    top: 50%;
+    left: 40%;
 }
 
 
@@ -122,7 +164,7 @@
     transform: rotateY(10deg) rotateX(-70deg);
     transition: 0.3s;
     box-shadow: 5px 30px 10px rgba(0, 0, 0, 1);
-    background: #A600FF;
+    background: #C14DFF;
 }
 
 .field:nth-child(1) {
@@ -130,6 +172,7 @@
     left: 1vw;
     width: calc(var(--size-field) + 4vh);
     height: calc(var(--size-field) + 4vh);
+    background: #FFB019;
 }
 
 .field:nth-child(2) {
@@ -192,7 +235,7 @@
     left: 47vw;
     background: url(Images/czaszka.png) no-repeat center center;
     background-size: 60%;
-    background-color: #A600FF;
+    background-color: #7400B3;
 }
 
 .field:nth-child(14) {
@@ -230,15 +273,17 @@
     left: 69vw;
     background: url(Images/back-icon-18.jpg) no-repeat center center;
     background-size: 55%;
-    background-color: #A600FF;
+    background-color: #7400B3;
 }
 
 .field:nth-child(21) {
     bottom: calc(var(--distanceY-between-field) * 7 + 1vh);
     left: 78vw;
-    background: url(Images/meta.jpg) repeat center center;
-    background-size: cover;
+    width: calc(var(--size-field) + 4vh);
+    height: calc(var(--size-field) + 4vh);
+    background-color: #FFB019;
 }
+
 
 .field p {
     width: 100%;
@@ -262,6 +307,6 @@
 }
 
 .field:nth-child(21) p {
-    transform: translateX(calc(50% - 50px)) translateY(var(--translate-Y));
-    font-size: 40px;
+    transform: translateX(calc(50% - 70px)) translateY(var(--translate-Y));
+    font-size: 60px;
 }

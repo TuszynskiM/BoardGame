@@ -58,12 +58,11 @@ const throwCube = async () => {
 
 const pawnPosition = async number => {
   board[pawnInfo.currentField].isActive = false;
+  await movePawn(number);
   pawnInfo.currentField += number;
-
   if (pawnInfo.currentField > 20) {
     pawnInfo.currentField = 20 - (pawnInfo.currentField - 20);
   }
-  await movePawn(pawnInfo.currentField - number, pawnInfo.currentField);
   board[pawnInfo.currentField].isActive = true;
   await result();
 };
@@ -74,21 +73,54 @@ const result = async () => {
   if (typeof field === 'string') {
     results.children[0].textContent = field;
     results.children[1].textContent = `Liczba rzutów: ${pawnInfo.numberOfThrows}`;
-    results.children[2].textContent = ` Srednia liczba oczek: ${Math.round(
-      pawnInfo.numberOfStitches / pawnInfo.numberOfThrows
-    )}`;
+    results.children[2].textContent = ` Srednia liczba oczek: ${Math.round(pawnInfo.numberOfStitches / pawnInfo.numberOfThrows)}`;
     results.classList.toggle('hideResults');
   } else if (typeof field === 'number') {
     await pawnPosition(field);
   }
 };
 
-const movePawn = async (startPoint, endPoint) => {
-  for (let i = startPoint; i <= endPoint; i++) {
-    pawn.style.top = board[i].top;
-    pawn.style.left = board[i].left;
-    await sleep(500);
+const movePawn = async (increaseNumber) => {
+  let index = pawnInfo.currentField;
+  if(index + increaseNumber <= 20 && increaseNumber > 0){
+    let maxIndex = index + increaseNumber;
+    while(index <= maxIndex ){
+        pawn.style.top = board[index].top;
+        pawn.style.left = board[index].left;
+        index++;
+        await sleep(500);
+    }
+  }else if(increaseNumber > 0){
+    for(let i = index; i <= 20; i++){
+      pawn.style.top = board[i].top;
+      pawn.style.left = board[i].left;
+      await sleep(500);
+    }
+
+    let decreaseIndex = 20 -((index + increaseNumber) - 20);
+    for(let i = 20; i >= decreaseIndex; i--){
+      pawn.style.top = board[i].top;
+      pawn.style.left = board[i].left;
+      await sleep(500);
+    }
+  }else{
+    let backIndex = index + increaseNumber;
+      pawn.style.top = board[backIndex].top;
+      pawn.style.left = board[backIndex].left;
+      await sleep(500);
   }
+
+  // if(startPoint<endPoint){
+  //   for (let i = startPoint; i <= endPoint; i++) {
+  //     pawn.style.top = board[i].top;
+  //     pawn.style.left = board[i].left;
+  //     await sleep(500);
+  //   }
+  // }else{
+  //     pawn.style.top = board[endPoint].top;
+  //     pawn.style.left = board[endPoint].left;
+  //     await sleep(500);
+  // }
 };
 
 async function sleep(milliseconds) {
@@ -102,10 +134,9 @@ async function sleep(milliseconds) {
 
 throwBtn.addEventListener('click', throwCube);
 
-closeBtn.addEventListener('click', function() {
+closeBtn.addEventListener('click', async function() {
   results.classList.toggle('hideResults');
-  pawnInfo.currentField = 0;
+  await pawnPosition(-pawnInfo.currentField);
   pawnInfo.numberOfStitches = 0;
   pawnInfo.numberOfThrows = 0;
-  pawnPosition(pawnInfo.currentField);
 });
