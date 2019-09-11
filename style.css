@@ -1,10 +1,10 @@
 :root {
-    --size-field: 140px;
-    --font-size: 60px;
+    --size-field: 12.73vh;
+    --font-size: 5.45vh;
     --font-family: 'Niconne', cursive;
     --translate-X: calc(50% - (var(--font-size)/4));
     --translate-Y: calc(50% - (var(--font-size)/2));
-    --distanceY-between-field: 75px;
+    --distanceY-between-field: 6.82vh;
 }
 
 * {
@@ -16,14 +16,11 @@
 body {
     overflow: hidden;
 }
-.wrapper{
-  max-width: 1920px;
-}
 
-.startWindow{
+.startWindow {
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -44,60 +41,76 @@ body {
 
 .pawn {
     position: absolute;
-    height: 200px;
-    width: 150px;
+    height: 10vh;
+    width: 10vh;
     background: url("Images/pawn.png") no-repeat center center;
-    background-size: 100%;
-    transform: translateX(0%) translateY(-70%);
+    background-size: contain;
+    transform: translateX(-50%) translateY(-100%);
     z-index: 100;
     transition: 0.5s;
+}
+
+@media(min-width:1366px) and (orientation: landscape) {
+    .pawn {
+        transform: translateX(-50%) translateY(-120%);
+    }
+}
+
+@media(min-width:1920px) and (orientation: landscape) {
+    .pawn {
+        transform: translateX(-50%) translateY(-130%);
+    }
 }
 
 .dice {
     position: absolute;
     bottom: 9vh;
     right: 8vw;
-    width: 73px;
-    height: 73px;
-    background: url('Images/dice.jpg') no-repeat -20px center;
+    width: 3.802083vw;
+    height: 6.759259vh;
+    background: url('Images/dice.jpg') no-repeat -1.05vw center;
     background-size: 950%;
     border-radius: 15%;
     transition: 0.3s;
 }
 
-.clouds div{
+.clouds div {
     position: absolute;
-    top: -50px;
-    left: -410px;
-    width: 500px;
-    height: 300px;
+    top: 0;
+    left: -21.58vw;
+    width: 26.32vw;
+    height: 27.27vh;
     z-index: 10;
 }
 
-.cloud1{
-background: url("Images/cloud1.png") no-repeat ;
-background-size: contain;
-animation: cloudMovement 30s linear alternate infinite;
+.cloud1 {
+    background: url("Images/cloud1.png") no-repeat;
+    background-size: contain;
+    animation: cloudMovement 30s linear alternate infinite;
 }
 
-.cloud2{
-background: url("Images/cloud2.png") no-repeat ;
-background-size: contain;
-animation: cloudMovement 28s linear alternate-reverse infinite;
+.cloud2 {
+    background: url("Images/cloud2.png") no-repeat;
+    background-size: contain;
+    animation: cloudMovement 28s linear alternate-reverse infinite;
 }
 
-.cloud3{
-background: url("Images/cloud3.png") no-repeat ;
-background-size: contain;
-animation: cloudMovement 24s linear alternate infinite;
+.cloud3 {
+    background: url("Images/cloud3.png") no-repeat;
+    background-size: contain;
+    animation: cloudMovement 24s linear alternate infinite;
 }
 
-@keyframes cloudMovement{
-    0%{ top:-50px;
-        left: -410px;}
+@keyframes cloudMovement {
+    0% {
+        top: 0;
+        left: -21.58vw;
+    }
 
-    100%{ top:-35px;
-        left: 1920px}
+    100% {
+        top: 0;
+        left: 101.05vw;
+    }
 }
 
 .btn {
@@ -141,7 +154,7 @@ animation: cloudMovement 24s linear alternate infinite;
     background: url("Images/scroll.png") no-repeat center center;
     background-size: 45%;
     background-color: rgba(0, 0, 0, 0.7);
-    font-size: 36px;
+    font-size: 3.27vh;
     font-family: var(--font-family);
     z-index: 1000;
 }
@@ -321,6 +334,6 @@ animation: cloudMovement 24s linear alternate infinite;
 }
 
 .field:nth-child(21) p {
-    transform: translateX(calc(50% - 70px)) translateY(var(--translate-Y));
-    font-size: 60px;
+    transform: translateX(calc(50% - 3.684vw)) translateY(var(--translate-Y));
+    font-size: 5.45vh;
 }

@@ -11,41 +11,131 @@ const wrapper = document.getElementById("wrapperID");
 // Special field:
 // string - title to show
 // number - move the pawn by this value
-const board = [
-  { isActive: true, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, specialField: 'Przegrana', top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, top: '', left: '' },
-  { isActive: false, specialField: -8, top: '', left: '' },
-  { isActive: false, specialField: 'Wygrana', top: '', left: '' }
+const board = [{
+    isActive: true,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    specialField: 'Przegrana',
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    specialField: -8,
+    top: '',
+    left: ''
+  },
+  {
+    isActive: false,
+    specialField: 'Wygrana',
+    top: '',
+    left: ''
+  }
 ];
 
-const pawnInfo = { currentField: 0, numberOfThrows: 0, numberOfStitches: 0 };
+const pawnInfo = {
+  currentField: 0,
+  numberOfThrows: 0,
+  numberOfStitches: 0
+};
 
-const fullScreen = () =>{
+const fullScreen = () => {
   wrapper.requestFullscreen();
 }
 
 const getCoordinates = () => {
   boardWraper.forEach((fieldDiv, index) => {
     let coordinates = fieldDiv.getBoundingClientRect();
-    board[index].top = `${coordinates.top}px`;
-    board[index].left = `${coordinates.left}px`;
+    board[index].top = `${coordinates.top + (coordinates.height / 2)}px`;
+    board[index].left = `${coordinates.left + (coordinates.width / 2)}px`;
   });
 };
 
@@ -59,18 +149,20 @@ const getCoordinates = () => {
 
 const throwCube = async () => {
   throwBtn.disabled = true;
-  let throwedNumber = Math.floor(Math.random() * 6 + 1);
+  let diceNumber = Math.floor(Math.random() * 6 + 1);
   pawnInfo.numberOfThrows += 1;
-  pawnInfo.numberOfStitches += throwedNumber;
-  dice.style.backgroundPositionX = `${-20 - (throwedNumber - 1) * 116}px`;
-  await pawnPosition(throwedNumber);
+  pawnInfo.numberOfStitches += diceNumber;
+  let diceSize = dice.getBoundingClientRect().width;
+  console.log(diceSize)
+  dice.style.backgroundPositionX = `${-(diceSize / 3.65) - (diceNumber - 1) * (diceSize * 1.5890411)}px`;
+  await pawnPosition(diceNumber);
   throwBtn.disabled = false;
 };
 
-const pawnPosition = async number => {
+const pawnPosition = async rolledNumber => {
   board[pawnInfo.currentField].isActive = false;
-  await movePawn(number);
-  pawnInfo.currentField += number;
+  await movePawn(rolledNumber);
+  pawnInfo.currentField += rolledNumber;
   if (pawnInfo.currentField > 20) {
     pawnInfo.currentField = 20 - (pawnInfo.currentField - 20);
   }
@@ -93,32 +185,32 @@ const result = async () => {
 
 const movePawn = async (increaseNumber) => {
   let index = pawnInfo.currentField;
-  if(index + increaseNumber <= 20 && increaseNumber > 0){
+  if (index + increaseNumber <= 20 && increaseNumber > 0) {
     let maxIndex = index + increaseNumber;
-    while(index <= maxIndex ){
-        pawn.style.top = board[index].top;
-        pawn.style.left = board[index].left;
-        index++;
-        await sleep(500);
+    while (index <= maxIndex) {
+      pawn.style.top = board[index].top;
+      pawn.style.left = board[index].left;
+      index++;
+      await sleep(500);
     }
-  }else if(increaseNumber > 0){
-    for(let i = index; i <= 20; i++){
+  } else if (increaseNumber > 0) {
+    for (let i = index; i <= 20; i++) {
       pawn.style.top = board[i].top;
       pawn.style.left = board[i].left;
       await sleep(500);
     }
 
-    let decreaseIndex = 20 -((index + increaseNumber) - 20);
-    for(let i = 20; i >= decreaseIndex; i--){
+    let decreaseIndex = 20 - ((index + increaseNumber) - 20);
+    for (let i = 20; i >= decreaseIndex; i--) {
       pawn.style.top = board[i].top;
       pawn.style.left = board[i].left;
       await sleep(500);
     }
-  }else{
+  } else {
     let backIndex = index + increaseNumber;
-      pawn.style.top = board[backIndex].top;
-      pawn.style.left = board[backIndex].left;
-      await sleep(500);
+    pawn.style.top = board[backIndex].top;
+    pawn.style.left = board[backIndex].left;
+    await sleep(500);
   }
 };
 
@@ -133,17 +225,20 @@ const sleep = async (milliseconds) => {
 
 startBtn.addEventListener("click", fullScreen);
 
-wrapper.addEventListener("fullscreenchange", () =>{
-if(window.innerWidth == screen.width && window.innerHeight == screen.height){
-    startWindow.classList.toggle("hideWindow"); 
-}else{
-  startWindow.classList.toggle("hideWindow"); 
-} 
+wrapper.addEventListener("fullscreenchange", () => {
+  getCoordinates();
+  pawn.style.top = board[pawnInfo.currentField].top;
+  pawn.style.left = board[pawnInfo.currentField].left;
+  if (window.innerWidth == screen.width && window.innerHeight == screen.height) {
+    startWindow.classList.add("hideWindow");
+  } else {
+    startWindow.classList.remove("hideWindow");
+  }
 })
 
 throwBtn.addEventListener('click', throwCube);
 
-closeBtn.addEventListener('click', async function() {
+closeBtn.addEventListener('click', async function () {
   results.classList.toggle('hideWindow');
   await pawnPosition(-pawnInfo.currentField);
   pawnInfo.numberOfStitches = 0;
